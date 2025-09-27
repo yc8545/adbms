@@ -1,0 +1,20 @@
+DROP TABLE IF EXISTS feepayments;
+
+CREATE TABLE feepayments (
+    payment_id SERIAL PRIMARY KEY,     
+    student_name VARCHAR(100) NOT NULL,
+    amount NUMERIC(10,2) CHECK (amount > 0),
+    payment_date DATE
+);
+
+BEGIN;
+
+INSERT INTO feepayments (student_name, amount, payment_date)
+VALUES
+('Ashish', 5000.00, '2024-06-01'),
+('Smaran', 4500.00, '2024-06-02'),
+('Vaibhav', 5500.00, '2024-06-03');
+
+COMMIT;
+
+SELECT * FROM feepayments;
