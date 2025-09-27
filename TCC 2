@@ -1,0 +1,24 @@
+DROP TABLE IF EXISTS employees CASCADE;
+CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50),
+    department VARCHAR(50),
+    salary NUMERIC
+);
+
+INSERT INTO employees (name, department, salary) VALUES
+('Anannya', 'HR', 40000),
+('Yashika', 'Engineering', 60000),
+('Simran', 'Engineering', 55000),
+('Khushi', 'Sales', 30000),
+('Supriya', 'HR', 45000);
+
+SELECT * FROM employees;
+SELECT name, salary FROM employees WHERE salary > 40000;
+SELECT name FROM employees WHERE department = 'Engineering' AND salary >= 55000;
+SELECT department, AVG(salary) FROM employees GROUP BY department;
+SELECT department, COUNT(*) FROM employees GROUP BY department HAVING COUNT(*) > 1;
+SELECT * FROM employees ORDER BY salary DESC LIMIT 3;
+TRUNCATE TABLE employees;
+DROP TABLE IF EXISTS employees CASCADE;
+
